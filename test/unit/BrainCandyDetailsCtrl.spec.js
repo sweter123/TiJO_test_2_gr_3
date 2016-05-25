@@ -15,11 +15,11 @@ describe("BrainCandyDetailsCtrl", function () {
                 });
                 return this;
             }
-        })
+        });
 
     });
     beforeEach(inject(function ($controller) {
-        brainCandyDetailsCtrl = $controller('BrainCandyDetailsCtrl', {CandyDAO: CandyDAOmock})
+        brainCandyDetailsCtrl = $controller('BrainCandyDetailsCtrl', {CandyDAO: CandyDAOmock});
 
     }));
 
@@ -35,7 +35,7 @@ describe("BrainCandyDetailsCtrl", function () {
         });
 
         it("should be a object", function () {
-            expect('object' == typeof brainCandyDetailsCtrl.details).toBe(true);
+            expect('object' === typeof brainCandyDetailsCtrl.details).toBe(true);
         });
         it("should heave properties : id, name, factory", function () {
             expect(brainCandyDetailsCtrl.details['id']).not.toBe(undefined);

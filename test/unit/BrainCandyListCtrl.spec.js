@@ -3,7 +3,6 @@ describe("BrainCandyListCtrl", function () {
     beforeEach(module('exerciseApp'));
     var brainCandyListCtrl;
     var CandyDAOmock;
-    var CandyDAO_mock;
     var sequence = 1;
     var candies = {};
     [
@@ -24,19 +23,19 @@ describe("BrainCandyListCtrl", function () {
         }
     ].every(function (value) {
         candies[value.id] = value;
-        return true;;
+        return true;
     });
-    beforeEach(function (arg) {
+    beforeEach(function () {
         CandyDAOmock = jasmine.createSpyObj('CandyDAO', ['query']);
         CandyDAOmock.query.andReturn({
             then: function (callback) {
                 callback(candies);
-                return this
+                return this;
             }
         });
     });
     beforeEach(inject(function ($controller) {
-        brainCandyListCtrl = $controller('BrainCandyListCtrl', {CandyDAO: CandyDAOmock})
+        brainCandyListCtrl = $controller('BrainCandyListCtrl', {CandyDAO: CandyDAOmock});
 
     }));
 
@@ -51,8 +50,8 @@ describe("BrainCandyListCtrl", function () {
             expect(brainCandyListCtrl.list).not.toBe(undefined);
         });
 
-        it("should be a object", function (test) {
-            expect('object' == typeof brainCandyListCtrl.list).toBe(true);
+        it("should be a object", function () {
+            expect('object' === typeof brainCandyListCtrl.list).toBe(true);
         });
 
     });
